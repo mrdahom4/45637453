@@ -283,6 +283,98 @@ message.react("❌")
 });	 
 
 
+const ms = require("ms");
+  client.on("message", message => {
+ if(!message.channel.guild) return;  
+  if (message.author.bot) return;
+ 
+  let command = message.content.split(" ")[0];
+ 
+  if (message.content.split(" ")[0].toLowerCase() === prefix + "unmute") {
+        if (!message.member.hasPermission('MANAGE_ROLES')) return;
+  let user = message.mentions.users.first();
+  let modlog = client.channels.find('name', 'log');
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  if (!muteRole) return message.reply(" I Can’t Find 'Muted' Role ").catch(console.error).then(message => message.delete(4000))
+  if (message.mentions.users.size < 1) return message.reply(' Error : ``Mention a User``').catch(console.error).then(message => message.delete(4000))
+  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return;
+ 
+  if (message.guild.member(user).removeRole(muteRole.id)) {
+      return message.reply("User Has Been UnMuted.").catch(console.error).then(message => message.delete(4000))
+  } else {
+    message.guild.member(user).removeRole(muteRole).then(() => {
+      return message.reply("User Has Been UnMuted.").catch(console.error).then(message => message.delete(4000))
+    });
+  }
+ 
+};
+ 
+});
+ 
+ 
+client.on('message',function(message) {
+ if(!message.channel.guild) return;    let messageArray = message.content.split(' ');
+    let muteRole =  message.guild.roles.find('name', 'Muted');
+    let muteMember = message.mentions.members.first();
+    let muteReason = messageArray[2];
+    let muteDuration = messageArray[3];
+ if (message.content.split(" ")[0].toLowerCase() === prefix + "mute") {
+           
+  if (message.author.bot) return;
+       if(!muteRole) return message.guild.createRole({name: 'Muted'}).then(message.guild.channels.forEach(chan => chan.overwritePermissions(muteRole, {SEND_MESSAGES:false,ADD_REACTIONS:false})));
+       if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : You Need `` MANAGE_ROLES ``Permission ');
+       if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : I Don’t Have `` MANAGE_ROLES ``Permission ');
+       if(!muteMember) return message.channel.send(' Error : ``Mention a User``').then(message => message.delete(4000))
+       if(!muteReason) return message.channel.send(' Error : ``Supply a Reason``').then(message => message.delete(4000))
+       if(!muteDuration) return message.channel.send(' Error : `` Supply Mute Time `` \n Ex: #mute @user reason 1m ').then(message => message.delete(4000))
+       if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send(' Error : `` Invalid Mute Duration``').then(message => message.delete(4000))
+       message.channel.send(`${muteMember} Has Been Muted.`).then(message => message.delete(5000))
+       muteMember.addRole(muteRole);
+       muteMember.setMute(true)
+       .then(() => { setTimeout(() => {
+           muteMember.removeRole(muteRole)
+           muteMember.setMute(false)
+       }, mmss(muteDuration));
+       });
+   }
+});
+
+
+
+const devs = ["525435533770620928"];
+const adminprefix = ["Dv"];
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!devs.includes(message.author.id)) return;
+      
+  if (message.content.startsWith('(prefix))ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+     if (message.content === ("leave")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith('(prefix)wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith('(prefix)ls')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith('(prefix)st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.send(`**✅**`)
+  }
+  if (message.content.startsWith('(prefix)name')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith('(prefix)avatar')) {
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
+});
 
 
 client.on('message', message => {
@@ -919,6 +1011,75 @@ client.on('message', async xkiller => {
    
   })
 
+
+client.on("message", (message) => {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+  if (message.content.toLowerCase().startsWith(prefix + `258767+96746476`)) {
+    const embed = new Discord.RichEmbed()
+    .setTitle(`:mailbox_with_mail: Vulnix Help`)
+    .setColor(0xCF40FA)
+    .setDescription(`Hello! I'm Vulnix, the Discord bot for super cool support ticket stuff and more! Here are my commands:`)
+    .addField(`Tickets`, `[${prefix}new]() > Opens up a new ticket and tags the Support Team\n[${prefix}close]() > Closes a ticket that has been resolved or been opened by accident`)
+    .addField(`Other`, `[${prefix}help]() > Shows you this help menu your reading\n[${prefix}ping]() > Pings the bot to see how long it takes to react\n[${prefix}about]() > Tells you all about Vulnix`)
+    message.channel.send({ embed: embed });
+  }
+
+  if (message.content.toLowerCase().startsWith(prefix + `54416441541545`)) {
+    message.channel.send(`Hoold on!`).then(m => {
+    m.edit(`:ping_pong: Wew, made it over the ~waves~ ! **Pong!**\nMessage edit time is ` + (m.createdTimestamp - message.createdTimestamp) + `ms, Discord API heartbeat is ` + Math.round(client.ping) + `ms.`);
+    });
+}
+
+if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+    const reason = message.content.split(" ").slice(1).join(" ");
+    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
+    message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
+        let role = message.guild.roles.find("name", "Support Team");
+        let role2 = message.guild.roles.find("name", "@everyone");
+        c.overwritePermissions(role, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        c.overwritePermissions(role2, {
+            SEND_MESSAGES: false,
+            READ_MESSAGES: false
+        });
+        c.overwritePermissions(message.author, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+        const embed = new Discord.RichEmbed()
+        .setColor(0xCF40FA)
+        .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Team** will be here soon to help.`)
+        .setTimestamp();
+        c.send({ embed: embed });
+    }).catch(console.error);
+}
+if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+
+    message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '-confirm', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
+    });
+}
+
+});
 
 
 client.login(process.env.BOT_TOKEN);
