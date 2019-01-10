@@ -325,9 +325,6 @@ client.on('message',function(message) {
        if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : You Need `` MANAGE_ROLES ``Permission ');
        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : I Don’t Have `` MANAGE_ROLES ``Permission ');
        if(!muteMember) return message.channel.send(' Error : ``Mention a User``').then(message => message.delete(4000))
-       if(!muteReason) return message.channel.send(' Error : ``Supply a Reason``').then(message => message.delete(4000))
-       if(!muteDuration) return message.channel.send(' Error : `` Supply Mute Time `` \n Ex: #mute @user reason 1m ').then(message => message.delete(4000))
-       if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send(' Error : `` Invalid Mute Duration``').then(message => message.delete(4000))
        message.channel.send(`${muteMember} Has Been Muted.`).then(message => message.delete(5000))
        muteMember.addRole(muteRole);
        muteMember.setMute(true)
