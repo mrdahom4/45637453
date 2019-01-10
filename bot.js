@@ -294,7 +294,7 @@ client.on('message', message => {
 		 
 
 
- message.author.sendMessage("
+ message.author.sendMessage(`
  **
 
  ```  
@@ -359,7 +359,7 @@ client.on('message', message => {
 **
 
 
-");
+`);
 
     }
 });
