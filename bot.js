@@ -388,42 +388,26 @@ client.on('message', message => {
 
 
   #kick <mention >  لطرد عضو
- 
   #mute < mention >  اسكات عضو 
-
   #clear   لتنضيف المحادثة (fixing)
-
   #role  لتعطي لشخص رتبه او للكل
-
   #cv <name>  صنع روم صوتية
-
   #ct <name>  صنع روم كتابية
-
   #unmute <mention>  فك الاسكات من العضو
-  
   #bc <message>  لارسال رسالة لجميع اعضاء السيرفر
-
   #move ➾ لسحب العضو الي الروم الصوتي
-
   #voice <name>  عمل روم فيوس اونلين
 
   عامه اوامر 
 
 
  #roll <number> ➾ قرعة
-
  #member ➾ معلومات الاعضاء
-
  #avatar ➾ شعار حسابك
-
  #new ➾فتح تزكره 
-
  #id ➾ اي دي
-
  #date ➾ التاريخ
-
  #bot ➾ معلومات البوت
-
  #server ➾ معلومات السيرفر
 
 
