@@ -89,7 +89,7 @@ client.on("message", message => {
 	
 client.on('ready', function(){
     var ms = 20000 ;    
-    var setGame = ['#invite','#help','DvBot The One','V1.0'];    
+    var setGame = ['#invite','#help','By Lorans. | 4564 ','V2.0'];    
     var i = -1;    
     var j = 0;    
     setInterval(function (){    
@@ -100,7 +100,7 @@ j = 1;
             j = -1;    
       }    
        i = i+j;    
-        client.user.setGame(setGame[i],`https://twitch.tv/Codes`);    
+        client.user.setGame(setGame[i],`https://youtu.be/jzUz4ziN4RY`);    
 }, ms);    
     
 }); 
