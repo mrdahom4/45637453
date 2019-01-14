@@ -458,7 +458,7 @@ client.on('message', message => {
 
 **بامكانك دعوة البوت من هنا
 
-https://discordapp.com/api/oauth2/authorize?client_id=532950958448312351&permissions=0&scope=bot
+https://discordapp.com/api/oauth2/authorize?client_id=533070826011099146&permissions=8&scope=bot
 
 **
 `);
