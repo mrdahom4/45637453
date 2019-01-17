@@ -383,8 +383,17 @@ client.on('message', message => {
 		 
 
 
- message.author.sendMessage(`
- **  اداريه اوامر
+ message.author.sendMessage(`**
+مبرمج البوت : ! Lòrans. ♪
+
+╭━━━╮╱╱╭━━╮╱╱╱╭╮
+╰╮╭╮┃╱╱┃╭╮┃╱╱╭╯╰╮
+╱┃┃┃┣╮╭┫╰╯╰┳━┻╮╭╯
+╱┃┃┃┃╰╯┃╭━╮┃╭╮┃┃
+╭╯╰╯┣╮╭┫╰━╯┃╰╯┃╰╮
+╰━━━╯╰╯╰━━━┻━━┻━╯
+
+   اداريه اوامر
 
 
   #kick <mention >  لطرد عضو
