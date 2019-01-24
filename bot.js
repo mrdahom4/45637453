@@ -384,8 +384,6 @@ client.on('message', message => {
 
 
  message.author.sendMessage(`**
-مبرمج البوت : ! Lòrans. ♪
-
 ╭━━━╮╱╱╭━━╮╱╱╱╭╮
 ╰╮╭╮┃╱╱┃╭╮┃╱╱╭╯╰╮
 ╱┃┃┃┣╮╭┫╰╯╰┳━┻╮╭╯
@@ -410,14 +408,14 @@ client.on('message', message => {
   عامه اوامر 
 
 
- #roll <number> ➾ قرعة
- #member ➾ معلومات الاعضاء
- #avatar ➾ شعار حسابك
- #new ➾فتح تزكره 
- #id ➾ اي دي
- #date ➾ التاريخ
- #bot ➾ معلومات البوت
- #server ➾ معلومات السيرفر
+  #roll <number> ➾ قرعة
+  #member ➾ معلومات الاعضاء
+  #avatar ➾ شعار حسابك
+  #new ➾فتح تزكره 
+  #id ➾ اي دي
+  #date ➾ التاريخ
+  #bot ➾ معلومات البوت
+  #server ➾ معلومات السيرفر
 
 
   اخرى 
